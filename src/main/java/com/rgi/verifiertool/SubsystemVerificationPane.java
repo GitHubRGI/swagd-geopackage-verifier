@@ -160,7 +160,7 @@ public class SubsystemVerificationPane extends VBox
 
     private static Node getSeverityLevel(final Collection<VerificationIssue> issues)
     {
-        final boolean hasError = issues.stream().anyMatch(issue -> issue.getSeverity().equals(Severity.Error));
+        final boolean hasError = issues.stream().anyMatch(issue -> issue.getSeverity() == Severity.Error);
 
         // Add correct label
         if(hasError)
@@ -182,7 +182,7 @@ public class SubsystemVerificationPane extends VBox
         severityLevelPane.setHgap(5);
         severityLevelPane.getColumnConstraints().addAll(columnLeft,columnCenter);
 
-        final ImageView errorImage = new ImageView( new Image(SubsystemVerificationPane.class.getResourceAsStream(imageFileName)));
+        final ImageView errorImage = new ImageView( new Image(ClassLoader.getSystemResourceAsStream(imageFileName)));
         errorImage.setFitHeight(20);
         errorImage.setFitWidth(20);
         severityLevelPane.add(passingLevel, 1, 0);
